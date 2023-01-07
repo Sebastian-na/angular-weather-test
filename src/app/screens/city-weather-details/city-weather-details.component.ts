@@ -1,3 +1,4 @@
+import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -25,6 +26,7 @@ export class CityWeatherDetailsComponent implements OnInit {
     this.route.queryParamMap.subscribe(params => {
       const lat = Number(params.get('lat'))
       const lon = Number(params.get('lon'))
+      console.log(lat, lon)
       this.store.dispatch(loadWeather({ lat, lon }))
       this.store.dispatch(loadForecast({ lat, lon }))
     });
