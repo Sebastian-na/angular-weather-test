@@ -5,14 +5,15 @@
             <div class="weather-detail">
                 Weather: {{(weather$ | async)?.weather?.at(0)?.main}}
             </div>
-            <div class="weather-detail">
-                Description: {{(weather$ | async)?.weather?.at(0)?.description}}
+            <div class="image-container">
+                <img *ngIf="!(weatherLoading$ | async)"
+                    [src]="'http://openweathermap.org/img/wn/' + (weather$ | async)?.weather?.at(0)?.icon + '@4x.png'">
+            </div>
+            <div class="temperature">
+                {{kelvinToCelsius((weather$ | async)?.main?.temp)}} C°
             </div>
         </div>
-        <div>
-            <img *ngIf="!(weatherLoading$ | async)"
-                [src]="'http://openweathermap.org/img/wn/' + (weather$ | async)?.weather?.at(0)?.icon + '@2x.png'">
-        </div>
+
 
     </section>
     <app-loader *ngIf="this.forecastLoading$ | async"></app-loader>

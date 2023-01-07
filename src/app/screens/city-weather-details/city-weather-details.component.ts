@@ -29,4 +29,9 @@ export class CityWeatherDetailsComponent implements OnInit {
       this.store.dispatch(loadForecast({ lat, lon }))
     });
   }
+
+  kelvinToCelsius(kelvin: number | undefined) {
+    if (!kelvin) return 0
+    return Math.round(kelvin - 273.15)
+  }
 }
