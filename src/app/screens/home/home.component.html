@@ -1,0 +1,9 @@
+<div class="container">
+    <input class="input" type="text" placeholder="Search by city name" (input)="handleTextChange($event)" />
+    <ul class="list-container">
+        <li *ngFor="let city of cities$ | async" class="city">
+            <a [routerLink]="['/weather', {lat: city.lat, lon: city.lon}]">{{city.name}}, {{city.country}},
+                {{city.state}}</a>
+        </li>
+    </ul>
+</div>

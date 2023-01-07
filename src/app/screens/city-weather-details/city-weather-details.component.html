@@ -1,0 +1,10 @@
+<div class="container">
+    <app-loader *ngIf="this.weatherLoading$ | async"></app-loader>
+    <section class="weather">
+
+    </section>
+    <app-loader *ngIf="this.forecastLoading$ | async"></app-loader>
+    <section class="forecast">
+
+    </section>
+</div>
