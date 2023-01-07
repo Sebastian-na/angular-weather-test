@@ -3,7 +3,7 @@
     <section class="weather">
         <div class="weather-details">
             <div class="weather-detail">
-                Weather: {{(weather$ | async)?.weather?.at(0)?.main}}
+                {{(weather$ | async)?.weather?.at(0)?.main}}
             </div>
             <div class="image-container">
                 <img *ngIf="!(weatherLoading$ | async)"
