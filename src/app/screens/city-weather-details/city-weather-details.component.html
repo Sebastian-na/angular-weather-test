@@ -49,7 +49,7 @@
                 <li>
                     <app-forecast-item [weather]="weather$ | async"></app-forecast-item>
                 </li>
-                <li *ngFor="let weather of (forecast$ | async)?.list" (click)="onForecastClick(weather)">
+                <li *ngFor="let weather of (forecast$ | async)?.list">
                     <app-forecast-item [weather]="weather"></app-forecast-item>
                 </li>
             </ul>

@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Weather } from 'src/app/core/models/weather/weather.interface';
+import { AppState } from 'src/app/state/app.state';
+import { loadForecastWeather } from 'src/app/state/actions/weather.actions';
 
 @Component({
   selector: 'app-forecast-item',
@@ -8,6 +11,8 @@ import { Weather } from 'src/app/core/models/weather/weather.interface';
 })
 export class ForecastItemComponent {
   @Input() weather: Weather | undefined | null
+
+  constructor(private store: Store<AppState>) { }
 
   formatUnixHour(unix: number | undefined) {
     if (!unix) return 0
@@ -32,4 +37,10 @@ export class ForecastItemComponent {
     if (!string) return ""
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+  onForecastClick() {
+    if (!this.weather) return
+    this.store.dispatch(loadForecastWeather({ weather: this.weather }))
+  }
+
 }

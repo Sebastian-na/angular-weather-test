@@ -14,7 +14,6 @@ export const searchCityTextReducer = createReducer(
         }
     }),
     on(loadCitiesBySearchTextSuccess, (state, { cities }) => {
-        console.log(cities)
         return {
             ...state,
             cities
