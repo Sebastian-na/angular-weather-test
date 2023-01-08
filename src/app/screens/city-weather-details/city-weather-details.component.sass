@@ -9,6 +9,7 @@
     font-size: 2rem
     text-align: center
     scroll-behavior: smooth
+    position: relative
 
     section
         scroll-snap-align: start
@@ -24,16 +25,58 @@
     .forecast
         background-color: #ff5555
 
+.meta-details
+    display: flex
+    justify-content: space-between
+    align-items: center
+    font-size: 1rem
+
+.image-container
+    position: relative
+
+.weather-detail
+    position: absolute
+    bottom: 20px
+    left: 50%
+    transform: translateX(-50%)
+    font-size: 1rem
+
 .weather-details
     background: rgb(31,31,31)
     background: linear-gradient(225deg, rgba(31,31,31,1) 0%, rgba(43,43,43,1) 34%, rgba(0,0,0,1) 100%)
     position: relative
-    padding: 2em
-    border-radius: 1em
+    padding: 0.6em
+    border-radius: 0.5em
     color: white
 
+.weather-specific-details
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+.weather-specific-details-container
+    display: flex
+    flex-direction: column
+    justify-content: center
+    gap: 10px
+
+.weather-specific-details-item
+    display: flex
+    font-size: 1rem
+    gap: 10px
+
 .temperature
-    position: absolute
-    bottom: 20px
-    right: 20px
     font-size: 3rem
+
+.back-button
+    position: absolute
+    top: 20px
+    left: 20px
+    font-size: 1.5rem
+    background: none
+    color: white
+    border: none
+    cursor: pointer
+    a
+        text-decoration: none
+        color: white

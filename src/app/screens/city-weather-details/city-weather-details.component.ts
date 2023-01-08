@@ -1,4 +1,3 @@
-import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -22,7 +21,6 @@ export class CityWeatherDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private store: Store<AppState>) { }
 
   ngOnInit() {
-
     this.route.queryParamMap.subscribe(params => {
       const lat = Number(params.get('lat'))
       const lon = Number(params.get('lon'))
@@ -35,5 +33,17 @@ export class CityWeatherDetailsComponent implements OnInit {
   kelvinToCelsius(kelvin: number | undefined) {
     if (!kelvin) return 0
     return Math.round(kelvin - 273.15)
+  }
+
+  formatUnixHour(unix: number | undefined) {
+    if (!unix) return 0
+    const date = new Date(unix * 1000)
+
+    return new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: true }).format(date)
+  }
+
+  capitalizeFirstLetter(string: string | undefined) {
+    if (!string) return ""
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 }

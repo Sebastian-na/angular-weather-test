@@ -1,17 +1,49 @@
 <div class="container">
+    <button class="back-button">
+        <a routerLink="/">
+            <span class="material-symbols-outlined ">
+                arrow_back
+            </span>
+        </a>
+    </button>
     <app-loader *ngIf="this.weatherLoading$ | async"></app-loader>
     <section class="weather">
         <div class="weather-details">
-            <div class="weather-detail">
-                {{(weather$ | async)?.weather?.at(0)?.main}}
+
+            <div class="meta-details">
+                <div>
+                    <p>{{(weather$|async)?.name}}</p>
+                </div>
+                <div>
+                    <p>{{formatUnixHour((weather$|async)?.dt)}}</p>
+                </div>
             </div>
+
             <div class="image-container">
                 <img *ngIf="!(weatherLoading$ | async)"
-                    [src]="'http://openweathermap.org/img/wn/' + (weather$ | async)?.weather?.at(0)?.icon + '@4x.png'">
+                    [src]="'http://openweathermap.org/img/wn/' + (weather$ | async)?.weather?.at(0)?.icon + '@4x.png'" />
+                <div class="weather-detail">
+                    {{capitalizeFirstLetter((weather$ | async)?.weather?.at(0)?.description)}}
+                </div>
             </div>
-            <div class="temperature">
-                {{kelvinToCelsius((weather$ | async)?.main?.temp)}} C°
+
+            <div class="weather-specific-details">
+                <div class="weather-specific-details-container">
+                    <div class="weather-specific-details-item">
+                        <span class="material-symbols-outlined">water_drop</span>
+                        <p>{{(weather$ | async)?.main?.humidity}}%</p>
+                    </div>
+                    <div class="weather-specific-details-item">
+                        <span class="detail-icon" class="material-symbols-outlined">air</span>
+                        <p>{{(weather$ | async)?.wind?.speed}} m/s</p>
+                    </div>
+                </div>
+
+                <div class="temperature">
+                    {{kelvinToCelsius((weather$ | async)?.main?.temp)}}°
+                </div>
             </div>
+
         </div>
 
 

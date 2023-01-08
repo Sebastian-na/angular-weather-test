@@ -15,7 +15,6 @@ import { WeatherEffects } from './state/effects/weather.effects';
 import { ForecastEffects } from './state/effects/forecast.effects';
 import { CitySearchEffects } from './state/effects/city-search.effects';
 import { LoaderComponent } from './components/loader/loader.component';
-
 @NgModule({
   declarations: [
     AppComponent,

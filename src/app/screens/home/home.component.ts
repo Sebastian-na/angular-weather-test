@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { loadCitiesBySearchText } from 'src/app/state/actions/city-search.actions';
+import { loadCitiesBySearchText, cleanCities } from 'src/app/state/actions/city-search.actions';
 import { AppState } from 'src/app/state/app.state';
 import { selectCitiesList } from 'src/app/state/selectors/city-search.selectors';
 
@@ -28,8 +28,8 @@ export class HomeComponent {
     }
   }
 
-  goToCityWeatherDetails(lat: number, lon: number) {
-    window.location.href = `/city-weather-details?lat=${lat}&lon=${lon}`
+  clearCities() {
+    this.store.dispatch(cleanCities())
   }
 
 
