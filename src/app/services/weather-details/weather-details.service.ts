@@ -4,7 +4,7 @@ import { Weather } from '../../core/models/weather/weather.interface';
 import { Observable } from 'rxjs';
 import { Forecast } from '../../core/models/forecast/forecast.interface';
 
-const apiKey = "2ee5cad5fe913208bfb77dcd4505c12a"
+const apiKey = "196cc00d3b2b60b15e1eb9e0e385d6d3"
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,6 @@ export class WeatherDetailsService {
   }
 
   getForecast(lat: number, lon: number): Observable<Forecast> {
-    return this.http.get<Forecast>(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&cnt=5&appid=${apiKey}`)
+    return this.http.get<Forecast>(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`)
   }
 }

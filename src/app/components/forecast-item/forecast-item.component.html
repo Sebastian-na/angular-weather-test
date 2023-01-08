@@ -1,0 +1,12 @@
+<div class="container">
+    <div>
+        {{capitalizeFirstLetter(formatUnixDay(weather?.dt))}}
+    </div>
+    <div>
+        {{formatUnixHour(weather?.dt)}}
+    </div>
+    <div>
+        <img *ngIf="weather" [src]="'http://openweathermap.org/img/wn/' + weather.weather.at(0)?.icon + '@2x.png'"
+            alt="" />
+    </div>
+</div>

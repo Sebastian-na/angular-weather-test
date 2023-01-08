@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { loadCitiesBySearchText, cleanCities } from 'src/app/state/actions/city-search.actions';
 import { AppState } from 'src/app/state/app.state';
@@ -7,7 +7,8 @@ import { selectCitiesList } from 'src/app/state/selectors/city-search.selectors'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass']
+  styleUrls: ['./home.component.sass'],
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class HomeComponent {
 

@@ -6,24 +6,24 @@
             </span>
         </a>
     </button>
-    <app-loader *ngIf="this.weatherLoading$ | async"></app-loader>
+    <app-loader *ngIf="(this.weatherLoading$ || this.forecastLoading$) | async"></app-loader>
     <section class="weather">
         <div class="weather-details">
 
             <div class="meta-details">
                 <div>
-                    <p>{{(weather$|async)?.name}}</p>
+                    <p>{{(current$|async)?.name}}</p>
                 </div>
                 <div>
-                    <p>{{formatUnixHour((weather$|async)?.dt)}}</p>
+                    <p>{{formatUnixHour((current$|async)?.dt)}}</p>
                 </div>
             </div>
 
             <div class="image-container">
                 <img *ngIf="!(weatherLoading$ | async)"
-                    [src]="'http://openweathermap.org/img/wn/' + (weather$ | async)?.weather?.at(0)?.icon + '@4x.png'" />
+                    [src]="'http://openweathermap.org/img/wn/' + (current$ | async)?.weather?.at(0)?.icon + '@4x.png'" />
                 <div class="weather-detail">
-                    {{capitalizeFirstLetter((weather$ | async)?.weather?.at(0)?.description)}}
+                    {{capitalizeFirstLetter((current$ | async)?.weather?.at(0)?.description)}}
                 </div>
             </div>
 
@@ -31,25 +31,30 @@
                 <div class="weather-specific-details-container">
                     <div class="weather-specific-details-item">
                         <span class="material-symbols-outlined">water_drop</span>
-                        <p>{{(weather$ | async)?.main?.humidity}}%</p>
+                        <p>{{(current$ | async)?.main?.humidity}}%</p>
                     </div>
                     <div class="weather-specific-details-item">
                         <span class="detail-icon" class="material-symbols-outlined">air</span>
-                        <p>{{(weather$ | async)?.wind?.speed}} m/s</p>
+                        <p>{{(current$ | async)?.wind?.speed}} m/s</p>
                     </div>
                 </div>
-
                 <div class="temperature">
-                    {{kelvinToCelsius((weather$ | async)?.main?.temp)}}°
+                    {{kelvinToCelsius((current$ | async)?.main?.temp)}}°
                 </div>
             </div>
-
         </div>
 
+        <div class="forecast">
+            <ul>
+                <li>
+                    <app-forecast-item [weather]="weather$ | async"></app-forecast-item>
+                </li>
+                <li *ngFor="let weather of (forecast$ | async)?.list" (click)="onForecastClick(weather)">
+                    <app-forecast-item [weather]="weather"></app-forecast-item>
+                </li>
+            </ul>
 
-    </section>
-    <app-loader *ngIf="this.forecastLoading$ | async"></app-loader>
-    <section class="forecast">
+        </div>
 
     </section>
 </div>

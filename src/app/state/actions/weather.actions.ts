@@ -10,3 +10,8 @@ export const loadWeatherSuccess = createAction(
     "[Weather] Load Weather Success",
     props<{ weather: Weather }>()
 );
+
+export const loadForecastWeather = createAction(
+    "[Weather] Load Forecast Weather",
+    props<{ weather: Weather }>()
+);

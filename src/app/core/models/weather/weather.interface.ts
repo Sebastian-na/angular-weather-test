@@ -38,16 +38,5 @@ export interface Weather {
         '3h': number
     }
     dt: number
-    sys: {
-        type: number
-        id: number
-        country: string
-        sunrise: number
-        sunset: number
-        message: string
-    }
-    timezone: number
-    id: number
     name: string
-    cod: number
 }
